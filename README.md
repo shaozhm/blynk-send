@@ -12,14 +12,14 @@ Welcome to Blynk Tool.
 Usage: blynk-send <command> [options]
 
 Commands:
-  blynk-send send <status>  Usage: send [-t] [-n] [-s] [-p] <status>
+  blynk-send write <status>  Usage: write [-t] [-n] [-s] [-p] <status>
 
 Options:
   --version  Show version number                                       [boolean]
   --help     Show help                                                 [boolean]
 
-> blynk-send send --help
-Usage: send [-t] [-n] [-s] [-p] <status>
+> blynk-send write --help
+Usage: write [-t] [-n] [-s] [-p] <status>
 
 Positionals:
   status  on/off                      [string] [required] [choices: "on", "off"]
@@ -43,7 +43,7 @@ Welcome Test Node
 ```
 
 ## Function 1:
-`blynk-send send on` - all speakers (`t1.local`, `f1.local`, `sub.local`, `s1l.local`, `s1r.local`) turn on.
+`blynk-send write on` - all speakers (`t1.local`, `f1.local`, `sub.local`, `s1l.local`, `s1r.local`) turn on.
 
 | machine            | token                              | hardware     | js program    |
 | :----------------  | :--------------------------------- | :----------- | :----------   |
@@ -97,35 +97,35 @@ Example:
 
 Commands: 
 1. turn off `f1`
-    * `blynk-send send -n 71 off`
-    * `blynk-send send -t LNCbSgxT5US_jRoRxEk3kUC2Vjtcs3JE -n 3 off`
+    * `blynk-send write -n 71 off`
+    * `blynk-send write -t LNCbSgxT5US_jRoRxEk3kUC2Vjtcs3JE -n 3 off`
 2. turn on  `f1`
-    * `blynk-send send -n 71 on`
-    * `blynk-send send -t TWeLjKM2HPMbpThb9wc9Py0OwGHWKfII -n 3 on`
+    * `blynk-send write -n 71 on`
+    * `blynk-send write -t TWeLjKM2HPMbpThb9wc9Py0OwGHWKfII -n 3 on`
 3. turn off `sub`
-    * `blynk-send send -n 72 off`
-    * `blynk-send send -t VHCZjPQkNy6DP_aqojIjTSczaIhEW2h8 -n 3 off`
+    * `blynk-send write -n 72 off`
+    * `blynk-send write -t VHCZjPQkNy6DP_aqojIjTSczaIhEW2h8 -n 3 off`
 4. turn on `sub`
-    * `blynk-send send -n 72 on`
-    * `blynk-send send -t QaW4U6_jzOKbthNeebh1mG2vGw_GStw_ -n 3 on`
+    * `blynk-send write -n 72 on`
+    * `blynk-send write -t QaW4U6_jzOKbthNeebh1mG2vGw_GStw_ -n 3 on`
 5. turn off `s1l`
-    * `blynk-send send -n 73 off`
-    * `blynk-send send -t 3svW_Nf21qz4zmN1_X9AB_1TuVcGOiNs -n 3 off`
+    * `blynk-send write -n 73 off`
+    * `blynk-send write -t 3svW_Nf21qz4zmN1_X9AB_1TuVcGOiNs -n 3 off`
 6. turn on `s1l`
-    * `blynk-send send -n 73 on`
-    * `blynk-send send -t jUZMCbN6q5j1VonTxZDXa4x9gmAnGpsr -n 3 on`
+    * `blynk-send write -n 73 on`
+    * `blynk-send write -t jUZMCbN6q5j1VonTxZDXa4x9gmAnGpsr -n 3 on`
 7. turn off `s1r`
-    * `blynk-send send -n 74 off`
-    * `blynk-send send -t EfZQYYHaMvN-lZ-NjQE4iPa0jSc9gg_A -n 3 off`
+    * `blynk-send write -n 74 off`
+    * `blynk-send write -t EfZQYYHaMvN-lZ-NjQE4iPa0jSc9gg_A -n 3 off`
 8. turn on `s1r`
-    * `blynk-send send -n 74 on`
-    * `blynk-send send -t vyt4OSy-c0AbNFKkzdSOl9W0_TTTPzzx -n 3 on`
+    * `blynk-send write -n 74 on`
+    * `blynk-send write -t vyt4OSy-c0AbNFKkzdSOl9W0_TTTPzzx -n 3 on`
 9. turn off `t1`
-    * `blynk-send send -n 75 off`
-    * `blynk-send send -t 9KX59DS8BEhdd7Ab1wlb-DeFKq9zuMgY -n 3 off`
+    * `blynk-send write -n 75 off`
+    * `blynk-send write -t 9KX59DS8BEhdd7Ab1wlb-DeFKq9zuMgY -n 3 off`
 10. turn on `t1`
-    * `blynk-send send -n 75 on`
-    * `blynk-send send -t l-ENcwSVVQGsmfZyjD-XiwXS7yoUIKEg -n 3 on`
+    * `blynk-send write -n 75 on`
+    * `blynk-send write -t l-ENcwSVVQGsmfZyjD-XiwXS7yoUIKEg -n 3 on`
 
 Testing using blynk-library (python scripts)
 > cd blynk-library/scripts

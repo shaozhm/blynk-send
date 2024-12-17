@@ -1,0 +1,54 @@
+controller:
+  - name: sonos
+    address: sonos.local
+    port: 8442
+    token: BO9Ej28AzpoEsaCs0WXiS3mqSO2KE8mZ
+    global-switch-button-pin: 1
+    idle-timeout: 1200000 ## 20 mins
+    shutdown-virtual-pin: 3
+
+modules:
+  - name: f1
+    nodemcu-bridge-pin: 61
+    nodemcu-token: TWeLjKM2HPMbpThb9wc9Py0OwGHWKfII
+    pi-bridge-pin: 81
+    pi-token: LNCbSgxT5US_jRoRxEk3kUC2Vjtcs3JE
+    idle-counter-pin: 21
+    display-pin: 11
+    switch-button-pin: 71
+
+  - name: sub
+    nodemcu-bridge-pin: 62
+    nodemcu-token: QaW4U6_jzOKbthNeebh1mG2vGw_GStw_
+    pi-bridge-pin: 82
+    pi-token: VHCZjPQkNy6DP_aqojIjTSczaIhEW2h8
+    idle-counter-pin: 22
+    display-pin: 12
+    switch-button-pin: 72
+
+  - name: s1l
+    nodemcu-bridge-pin: 63
+    nodemcu-token: jUZMCbN6q5j1VonTxZDXa4x9gmAnGpsr
+    pi-bridge-pin: 83
+    pi-token: 3svW_Nf21qz4zmN1_X9AB_1TuVcGOiNs
+    idle-counter-pin: 23
+    display-pin: 13
+    switch-button-pin: 73
+
+  - name: s1r
+    nodemcu-bridge-pin: 64
+    nodemcu-token: vyt4OSy-c0AbNFKkzdSOl9W0_TTTPzzx
+    pi-bridge-pin: 84
+    pi-token: EfZQYYHaMvN-lZ-NjQE4iPa0jSc9gg_A
+    idle-counter-pin: 24
+    display-pin: 14
+    switch-button-pin: 74
+
+  - name: t1
+    nodemcu-bridge-pin: 65
+    nodemcu-token: l-ENcwSVVQGsmfZyjD-XiwXS7yoUIKEg
+    pi-bridge-pin: 85
+    pi-token: 9KX59DS8BEhdd7Ab1wlb-DeFKq9zuMgY
+    idle-counter-pin: 25
+    display-pin: 15
+    switch-button-pin: 75
