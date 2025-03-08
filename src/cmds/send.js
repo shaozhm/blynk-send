@@ -1,7 +1,7 @@
 const { main } = require('../command-send');
 
-const command = 'send <machine> <board> <function> <status>';
-const desc = 'Usage: send <machine> <board> <function> <status>';
+const command = 'send [-s] [-p] <machine> <board> <status>';
+const desc = 'Usage: send [-s] [-p] <machine> <board> <status>';
 const builder = (yargs) => {
   return yargs
   .positional('machine', {
@@ -25,8 +25,8 @@ const builder = (yargs) => {
       'nodemcu'
     ]
   })
-  .positional('function', {
-    describe: 'function name',
+  .positional('pin', {
+    describe: 'pin number',
     type: 'string',
     demand: true,
   })
@@ -38,6 +38,20 @@ const builder = (yargs) => {
       'on',
       'off'
     ]
+  })
+  .option('s', {
+    alias: 'address',
+    describe: 'blynk server address',
+    type: 'string',
+    default: 'sonos.local',
+    demandOption: false,
+  })
+  .option('p', {
+    alias: 'port',
+    describe: 'blynk server port',
+    type: 'number',
+    default: 8442,
+    demandOption: false,
   })
 };
 const handler = (options) => main(options);
