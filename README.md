@@ -3,8 +3,12 @@
 1. start a blynk server with mocked data
 
 2. start test node
-> npm install
+> npm i --package-lock=true
 > npm link
+
+3. create a default config file (for the `blynk-send send` command to use)
+> cp config/config.yaml ~/blynk-sonospi-config.yaml
+
 > blynk-send
 ```text
 > blynk-send --help
@@ -17,7 +21,9 @@ Commands:
 Options:
   --version  Show version number                                       [boolean]
   --help     Show help                                                 [boolean]
-
+```
+3.1 blynk-send write 
+```text
 > blynk-send write --help
 Usage: write [-t] [-n] [-s] [-p] <status>
 
@@ -43,7 +49,7 @@ Welcome Test Node
 ```
 
 ## Function 1:
-`blynk-send send on/off` - all speakers (`t1.local`, `f1.local`, `sub.local`, `s1l.local`, `s1r.local`) turn on.
+`blynk-send write on/off` - all speakers (`t1.local`, `f1.local`, `sub.local`, `s1l.local`, `s1r.local`) turn on.
 
 | machine            | token                              | hardware     | js program    |
 | :----------------  | :--------------------------------- | :----------- | :----------   |
@@ -97,35 +103,60 @@ Example:
 
 Commands: 
 1. turn off `f1` (pi token: LNCbSgxT5US_jRoRxEk3kUC2Vjtcs3JE)
-    * `blynk-send send -n 71 off`
-    * `blynk-send send -t LNCbSgxT5US_jRoRxEk3kUC2Vjtcs3JE -n 3 off`
+    * `blynk-send write -n 71 off`
+    * `blynk-send write -t LNCbSgxT5US_jRoRxEk3kUC2Vjtcs3JE -n 3 off`
 2. turn on  `f1` (NF1 token: TWeLjKM2HPMbpThb9wc9Py0OwGHWKfII)
-    * `blynk-send send -n 71 on`
-    * `blynk-send send -t TWeLjKM2HPMbpThb9wc9Py0OwGHWKfII -n 3 on`
+    * `blynk-send write -n 71 on`
+    * `blynk-send write -t TWeLjKM2HPMbpThb9wc9Py0OwGHWKfII -n 3 on`
 3. turn off `sub`
-    * `blynk-send send -n 72 off`
-    * `blynk-send send -t VHCZjPQkNy6DP_aqojIjTSczaIhEW2h8 -n 3 off`
+    * `blynk-send write -n 72 off`
+    * `blynk-send write -t VHCZjPQkNy6DP_aqojIjTSczaIhEW2h8 -n 3 off`
 4. turn on `sub`
-    * `blynk-send send -n 72 on`
-    * `blynk-send send -t QaW4U6_jzOKbthNeebh1mG2vGw_GStw_ -n 3 on`
+    * `blynk-send write -n 72 on`
+    * `blynk-send write -t QaW4U6_jzOKbthNeebh1mG2vGw_GStw_ -n 3 on`
 5. turn off `s1l`
-    * `blynk-send send -n 73 off`
-    * `blynk-send send -t 3svW_Nf21qz4zmN1_X9AB_1TuVcGOiNs -n 3 off`
+    * `blynk-send write -n 73 off`
+    * `blynk-send write -t 3svW_Nf21qz4zmN1_X9AB_1TuVcGOiNs -n 3 off`
 6. turn on `s1l`
-    * `blynk-send send -n 73 on`
-    * `blynk-send send -t jUZMCbN6q5j1VonTxZDXa4x9gmAnGpsr -n 3 on`
+    * `blynk-send write -n 73 on`
+    * `blynk-send write -t jUZMCbN6q5j1VonTxZDXa4x9gmAnGpsr -n 3 on`
 7. turn off `s1r`
-    * `blynk-send send -n 74 off`
-    * `blynk-send send -t EfZQYYHaMvN-lZ-NjQE4iPa0jSc9gg_A -n 3 off`
+    * `blynk-send write -n 74 off`
+    * `blynk-send write -t EfZQYYHaMvN-lZ-NjQE4iPa0jSc9gg_A -n 3 off`
 8. turn on `s1r`
-    * `blynk-send send -n 74 on`
-    * `blynk-send send -t vyt4OSy-c0AbNFKkzdSOl9W0_TTTPzzx -n 3 on`
+    * `blynk-send write -n 74 on`
+    * `blynk-send write -t vyt4OSy-c0AbNFKkzdSOl9W0_TTTPzzx -n 3 on`
 9. turn off `t1`
-    * `blynk-send send -n 75 off`
-    * `blynk-send send -t 9KX59DS8BEhdd7Ab1wlb-DeFKq9zuMgY -n 3 off`
+    * `blynk-send write -n 75 off`
+    * `blynk-send write -t 9KX59DS8BEhdd7Ab1wlb-DeFKq9zuMgY -n 3 off`
 10. turn on `t1`
-    * `blynk-send send -n 75 on`
-    * `blynk-send send -t l-ENcwSVVQGsmfZyjD-XiwXS7yoUIKEg -n 3 on`
+    * `blynk-send write -n 75 on`
+    * `blynk-send write -t l-ENcwSVVQGsmfZyjD-XiwXS7yoUIKEg -n 3 on`
+
+
+3.2 blynk-send send
+```text
+> blynk-send send --help
+blynk-send send [-s] [-p] <machine> <status>
+
+Usage: send [-s] [-p] <machine> <status>
+
+Positionals:
+  machine  machine name
+                  [string] [required] [choices: "f1", "t1", "s1l", "s1r", "sub"]
+  status   on/off                     [string] [required] [choices: "on", "off"]
+
+Options:
+      --version  Show version number                                   [boolean]
+      --help     Show help                                             [boolean]
+  -s, --address  blynk server address          [string] [default: "sonos.local"]
+  -p, --port     blynk server port                      [number] [default: 8442]
+```
+Example:
+
+Commands: 
+1. turn on/off `f1`
+    * `blynk-send send f1 on/off`
 
 Testing using blynk-library (python scripts)
 > cd blynk-library/scripts

@@ -32,7 +32,6 @@ const main = (options) => {
 
   const {
     machine,
-    board,
     address,
     port,
     status,
@@ -40,32 +39,27 @@ const main = (options) => {
 
   const module = Lodash.find(modules, { name: machine });
   if (module) {
-    let token = null;
-    if (board === 'pi') {
-      token = module['pi-token'];
-    } else if (board === 'nodemcu') {
-      token = module['nodemcu-token'];
-    }
+    const {
+      token,
+    } = controller[0];
+    const switch_vpin = module['switch-button-pin'];
 
-    if (token) {
-      const blynk = new Blynk.Blynk(controller.token, options = {
-        connector : new Blynk.TcpClient( options = { addr: address, port: port })
-      });
-
-      blynk.on('connect', () => {
-        console.log('Welcome Test Node');
-        const bridge = new blynk.WidgetBridge(99);
-        bridge.setAuthToken(piToken);
-        // if (status === 'on') {
-        //   bridge.virtualWrite(testVPIN, 1);
-        // } else {
-        //   bridge.virtualWrite(testVPIN, 0);
-        // }
-        // console.log(`switchPin switch ${status}`);
-        blynk.emit('end');
-        blynk.disconnect(false);
-      });
-    }
+    const blynk = new Blynk.Blynk(token, options = {
+      connector : new Blynk.TcpClient( options = { addr: address, port: port })
+    });
+    blynk.on('connect', () => {
+      console.log('Welcome Test Node');
+      const bridge = new blynk.WidgetBridge(99);
+      bridge.setAuthToken(token);
+      if (status === 'on') {
+        bridge.virtualWrite(switch_vpin, 1);
+      } else {
+        bridge.virtualWrite(switch_vpin, 0);
+      }
+      console.log(`switchPin switch ${status}`);
+      blynk.emit('end');
+      blynk.disconnect(false);
+    });
   }
 };
 

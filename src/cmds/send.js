@@ -1,7 +1,7 @@
 const { main } = require('../command-send');
 
-const command = 'send [-s] [-p] <machine> <board> <status>';
-const desc = 'Usage: send [-s] [-p] <machine> <board> <status>';
+const command = 'send [-s] [-p] <machine> <status>';
+const desc = 'Usage: send [-s] [-p] <machine> <status>';
 const builder = (yargs) => {
   return yargs
   .positional('machine', {
@@ -15,20 +15,6 @@ const builder = (yargs) => {
       's1r',
       'sub'
     ]
-  })
-  .positional('board', {
-    describe: 'pi/nodemcu',
-    type: 'string',
-    demand: true,
-    choices: [
-      'pi',
-      'nodemcu'
-    ]
-  })
-  .positional('pin', {
-    describe: 'pin number',
-    type: 'string',
-    demand: true,
   })
   .positional('status', {
     describe: 'on/off',
